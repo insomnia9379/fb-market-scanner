@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#101418">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/queryInput"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Search (e.g. sur ron)"
+                android:text="electric dirt bike"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#777777"
+                android:inputType="text"
+                android:textSize="16sp"/>
+            <AutoCompleteTextView
+                android:id="@+id/cityInput"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="City (type any)"
+                android:text="Sebring"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#777777"
+                android:inputType="text"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/minPriceInput"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Min $"
+                android:inputType="number"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#777777"
+                android:textSize="16sp"/>
+            <EditText
+                android:id="@+id/maxPriceInput"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Max $"
+                android:text="6000"
+                android:inputType="number"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#777777"
+                android:textSize="16sp"/>
+            <EditText
+                android:id="@+id/radiusInput"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Radius mi"
+                android:text="100"
+                android:inputType="number"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#777777"
+                android:textSize="16sp"/>
+            <EditText
+                android:id="@+id/daysInput"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Days"
+                android:inputType="number"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#777777"
+                android:textSize="16sp"/>
+            <Button
+                android:id="@+id/scanBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="▶ Scan"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/browserBtn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="#4A9EFF"
+                android:text="Browser"/>
+            <Button
+                android:id="@+id/dealsBtn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="#4A9EFF"
+                android:text="Deals"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ViewFlipper
+        android:id="@+id/flipper"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/statsView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textColor="#CCCCCC"
+                android:textSize="15sp"
+                android:text="Total 0"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All"/>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSteals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔥 Steals"/>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFair"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✓ Fair"/>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipHigh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚠ High"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listings"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </ViewFlipper>
+
+    <ScrollView
+        android:id="@+id/logScroll"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="#0A0D10">
+        <TextView
+            android:id="@+id/logView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textColor="#7FDB7F"
+            android:textSize="12sp"
+            android:fontFamily="monospace"/>
+    </ScrollView>
+</LinearLayout>

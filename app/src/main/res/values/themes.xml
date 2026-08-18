@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DealScanner" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#4A9EFF</item>
+        <item name="colorSecondary">#1DB954</item>
+        <item name="android:statusBarColor">#0A0D10</item>
+        <item name="android:windowBackground">#101418</item>
+    </style>
+</resources>
